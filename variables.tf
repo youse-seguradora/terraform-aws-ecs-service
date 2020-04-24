@@ -1,6 +1,6 @@
 variable "service_name" {
   description = "Logical name of the service."
-  type        = "string"
+  type        = string
 }
 
 variable "ecs_cluster_id" {

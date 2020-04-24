@@ -13,18 +13,33 @@ Below an example for deloy a service to Fargate. See the example directroy for m
 local {
 
   ecs_cluster_id = arn:aws:ecs:us-east-1:123123123123:cluster/nginx
+  app_name       = nginx
+  app_port       = 8080
 
 }
 
 module "ecs_service" {
-  source  = "github.com/youse-seguradora/terraform-aws-ecs-service"
+  source = "github.com/youse_seguradora/terraform-aws-ecs-service"
 
-  service_name          = "nginx"
+  service_name          = local.app_name
+  service_launch_type   = "FARGATE"
   service_desired_count = 1
 
-  ecs_cluster_id = local.ecs_cluster_id
+  ecs_cluster_id          = "arn:aws:ecs:us-east-1:123123123123:cluster/core"
+  ecs_task_definition_arn = module.ecs_task_definition.arn
 
-  service_launch_type = "FARGATE"
+  enable_lb = true
+
+  awsvpc_service_map = [{
+    security_groups = ["sg-asdqwe123"].
+    subnets         = ["subnet-asdqwe123", "subnet-asdqwe456"]
+  }]
+
+  lb_target_groups_map = [{
+    target_group_arn = module.alb.target_group_arns[0]
+    container_name   = local.app_name
+    container_port   = local.app_port
+  }]
 }
 ```
 

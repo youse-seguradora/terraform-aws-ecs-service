@@ -1,4 +1,3 @@
-# Service for awsvpc networking and ALB/NLB
 resource "aws_ecs_service" "main" {
   name            = var.service_name
   cluster         = var.ecs_cluster_id
@@ -8,26 +7,26 @@ resource "aws_ecs_service" "main" {
   launch_type     = var.service_launch_type
 
   dynamic "load_balancer" {
-    for_each = var.enable_lb ? [var.lb_target_groups_map] : []
+    for_each = var.lb_target_groups_map
 
     content {
-      target_group_arn = load_balancer.value["target_group_arn"]
-      container_name   = load_balancer.value["container_name"]
-      container_port   = load_balancer.value["container_port"]
+      target_group_arn = load_balancer.value.target_group_arn
+      container_name   = load_balancer.value.container_name
+      container_port   = load_balancer.value.container_port
     }
 
   }
 
   dynamic "network_configuration" {
-    for_each = var.service_launch_type == "FARGATE" ? [var.awsvpc_service_map] : []
+    for_each = var.awsvpc_service_map
 
     content {
-      security_groups = network_configuration.value["security_groups"]
-      subnets         = network_configuration.value["subnets"]
+      security_groups = network_configuration.value.security_groups
+      subnets         = network_configuration.value.subnets
     }
   }
 
   lifecycle {
-    ignore_changes = ["desired_count"]
+    ignore_changes = [desired_count]
   }
 }
