@@ -43,6 +43,17 @@ module "ecs_service" {
 }
 ```
 
+## Testing
+
+### To run all test
+
+```bash
+cd test/
+go test
+```
+
+:warning: Running the test may result in an AWS charge.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Providers
 
@@ -69,6 +80,7 @@ module "ecs_service" {
 | Name | Description |
 |------|-------------|
 | desired\_count | The number of instances of the task definition to place and keep running. |
+| name | The name of ECS Service. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
