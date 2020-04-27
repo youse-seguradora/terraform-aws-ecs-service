@@ -5,12 +5,12 @@ variable "service_name" {
 
 variable "ecs_cluster_id" {
   description = "The id of the ECS cluster"
-  type        = "string"
+  type        = string
 }
 
 variable "ecs_task_definition_arn" {
   description = "The AWS task definition of the containers to be created."
-  type        = "string"
+  type        = string
 }
 
 variable "service_desired_count" {
@@ -28,7 +28,7 @@ variable "ecs_service_role" {
 variable "service_launch_type" {
 
   description = "The launch type, can be EC2 or FARGATE."
-  type        = "string"
+  type        = string
   default     = "EC2"
 }
 
