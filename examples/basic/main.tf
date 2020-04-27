@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "git@github.com:youse-seguradora/terraform-aws-vpc.git"
+  source = "github.com/youse-seguradora/terraform-aws-vpc"
 
   name = var.vpc_name
 
@@ -14,13 +14,13 @@ module "vpc" {
 }
 
 module "ecs_cluster" {
-  source = "git@github.com:youse-seguradora/terraform-aws-ecs-cluster.git"
+  source = "github.com/youse-seguradora/terraform-aws-ecs-cluster"
 
   ecs_cluster_name = var.ecs_cluster_name
 }
 
 module "ecs_fargate_task_def" {
-  source = "git@github.com:youse-seguradora/terraform-aws-ecs-task-definition.git"
+  source = "github.com/youse-seguradora/terraform-aws-ecs-task-definition"
 
   name                     = var.app_name
   container_definitions    = file("task.json")
