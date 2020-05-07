@@ -5,7 +5,7 @@ resource "aws_ecs_service" "main" {
   desired_count                     = var.service_desired_count
   iam_role                          = var.ecs_service_role
   launch_type                       = var.service_launch_type
-  health_check_grace_period_seconds = var.health_check_grace_period_seconds
+  health_check_grace_period_seconds = var.lb_target_groups_map == [] ? null : var.health_check_grace_period_seconds
 
   dynamic "load_balancer" {
     for_each = var.lb_target_groups_map
