@@ -77,7 +77,7 @@ go test
 | ecs\_service\_role | IAM role to attach to service | `string` | `""` | no |
 | ecs\_task\_definition\_arn | The AWS task definition of the containers to be created. | `string` | n/a | yes |
 | enable\_lb | Enable or disable the load balancer. | `bool` | `false` | no |
-| health\_check\_grace\_period\_seconds | Seconds to ignore failing load balancer health checks. | `number` | `0` | no |
+| health\_check\_grace\_period\_seconds | Seconds to ignore failing load balancer health checks. | `number` | `60` | no |
 | lb\_target\_groups\_map | Mapping from service to targets groups. | <pre>list(object({<br>    target_group_arn = string<br>    container_name   = string<br>    container_port   = number<br>  }))</pre> | `[]` | no |
 | service\_desired\_count | The number of instances of the task definition to place and keep running. | `number` | `1` | no |
 | service\_launch\_type | The launch type, can be EC2 or FARGATE. | `string` | `"EC2"` | no |

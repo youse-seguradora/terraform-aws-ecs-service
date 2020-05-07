@@ -36,7 +36,7 @@ variable "health_check_grace_period_seconds" {
 
   description = "Seconds to ignore failing load balancer health checks."
   type        = number
-  default     = 0
+  default     = 60
 }
 
 # LB Vars
