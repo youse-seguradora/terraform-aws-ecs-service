@@ -33,10 +33,11 @@ variable "service_launch_type" {
 }
 
 # LB Vars
-variable "enable_lb" {
-  type        = bool
-  description = "Enable or disable the load balancer."
-  default     = false
+variable "health_check_grace_period_seconds" {
+
+  description = "Seconds to ignore failing load balancer health checks."
+  type        = number
+  default     = 0
 }
 
 variable "lb_target_groups_map" {
