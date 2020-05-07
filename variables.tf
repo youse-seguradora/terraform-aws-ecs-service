@@ -37,7 +37,7 @@ variable "health_check_grace_period_seconds" {
 
   description = "Seconds to ignore failing load balancer health checks."
   type        = number
-  default     = 60
+  default     = 0
 }
 
 variable "lb_target_groups_map" {
