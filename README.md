@@ -55,6 +55,13 @@ go test
 :warning: Running the test may result in an AWS charge.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | ~> 0.12.24 |
+| aws | ~> 2.58 |
+
 ## Providers
 
 | Name | Version |
@@ -64,7 +71,7 @@ go test
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | awsvpc\_service\_map | Mapping awsvpc required attributes to network\_configuration. | <pre>list(object({<br>    security_groups = list(string)<br>    subnets         = list(string)<br>  }))</pre> | `[]` | no |
 | ecs\_cluster\_id | The id of the ECS cluster | `string` | n/a | yes |
 | ecs\_service\_role | IAM role to attach to service | `string` | `""` | no |

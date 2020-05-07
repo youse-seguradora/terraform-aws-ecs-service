@@ -1,10 +1,11 @@
 resource "aws_ecs_service" "main" {
-  name            = var.service_name
-  cluster         = var.ecs_cluster_id
-  task_definition = var.ecs_task_definition_arn
-  desired_count   = var.service_desired_count
-  iam_role        = var.ecs_service_role
-  launch_type     = var.service_launch_type
+  name                              = var.service_name
+  cluster                           = var.ecs_cluster_id
+  task_definition                   = var.ecs_task_definition_arn
+  desired_count                     = var.service_desired_count
+  iam_role                          = var.ecs_service_role
+  launch_type                       = var.service_launch_type
+  health_check_grace_period_seconds = var.health_cheack_grace_period_seconds
 
   dynamic "load_balancer" {
     for_each = var.lb_target_groups_map
