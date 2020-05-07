@@ -32,6 +32,13 @@ variable "service_launch_type" {
   default     = "EC2"
 }
 
+variable "health_cheack_grace_period_seconds" {
+
+  description = "Seconds to ignore failing load balancer health checks."
+  type        = string
+  default     = ""
+}
+
 # LB Vars
 variable "enable_lb" {
   type        = bool
