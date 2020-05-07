@@ -35,8 +35,8 @@ variable "service_launch_type" {
 variable "health_check_grace_period_seconds" {
 
   description = "Seconds to ignore failing load balancer health checks."
-  type        = string
-  default     = ""
+  type        = number
+  default     = 0
 }
 
 # LB Vars
