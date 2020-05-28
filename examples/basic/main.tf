@@ -1,5 +1,6 @@
 provider "aws" {
-  region = "us-east-2"
+  region  = "us-east-2"
+  profile = "cicd"
 }
 
 module "vpc" {
@@ -12,6 +13,7 @@ module "vpc" {
   azs                    = ["us-east-2a"]
   compute_public_subnets = ["192.168.253.0/24"]
 }
+
 
 module "ecs_cluster" {
   source = "github.com/youse-seguradora/terraform-aws-ecs-cluster"
