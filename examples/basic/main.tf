@@ -14,6 +14,7 @@ module "vpc" {
   compute_public_subnets = ["192.168.253.0/24"]
 }
 
+
 module "ecs_cluster" {
   source = "github.com/youse-seguradora/terraform-aws-ecs-cluster"
 
