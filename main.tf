@@ -42,3 +42,35 @@ resource "aws_ecs_service" "main" {
     ignore_changes = [desired_count]
   }
 }
+
+resource "aws_appautoscaling_target" "ecs_target" {
+  count = var.service_launch_type == "EC2" ? 1 : 0
+
+  max_capacity       = var.max_capacity
+  min_capacity       = var.min_capacity
+  resource_id        = var.resource_id
+  scalable_dimension = var.scalable_dimension
+  service_namespace  = var.service_namespace
+}
+
+resource "aws_appautoscaling_policy" "appautoscaling_policy_rpm_scale_up" {
+  count = var.service_launch_type == "EC2" ? 1 : 0
+
+  name               = var.name_policy
+  resource_id        = var.resource_id
+  policy_type        = var.policy_type
+  scalable_dimension = var.scalable_dimension
+  service_namespace  = var.service_namespace
+
+  target_tracking_scaling_policy_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ECSServiceAverageCPUUtilization"
+    }
+
+    target_value       = var.target_value
+    scale_in_cooldown  = var.scale_in_cooldown
+    scale_out_cooldown = var.scale_out_cooldown
+  }
+
+  depends_on = [aws_appautoscaling_target.ecs_target]
+}
