@@ -47,9 +47,9 @@ module "ecs_service" {
     subnets         = module.vpc.public_subnets
   }]
 
-  ordered_placement_strategy = [{
-    type  = BinPack
-    field = Memory
+  placement_strategy = [{
+    type  = "binpack"
+    field = "memory"
 
   }]
 }
