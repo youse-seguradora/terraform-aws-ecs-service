@@ -46,12 +46,6 @@ module "ecs_service" {
     security_groups = [module.vpc.default_security_group_id]
     subnets         = module.vpc.public_subnets
   }]
-
-  placement_strategy = [{
-    type  = "binpack"
-    field = "memory"
-
-  }]
 }
 
 variable "vpc_name" {
