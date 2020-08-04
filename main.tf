@@ -28,7 +28,7 @@ resource "aws_ecs_service" "main" {
   }
 
   dynamic "ordered_placement_strategy" {
-    for_each = var.ordered_placement_strategy
+    for_each = var.placement_strategy
 
 
     content {
