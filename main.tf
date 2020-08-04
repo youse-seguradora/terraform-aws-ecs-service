@@ -42,5 +42,3 @@ resource "aws_ecs_service" "main" {
     ignore_changes = [desired_count]
   }
 }
-
-
