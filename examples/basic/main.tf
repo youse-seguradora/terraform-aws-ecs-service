@@ -46,6 +46,12 @@ module "ecs_service" {
     security_groups = [module.vpc.default_security_group_id]
     subnets         = module.vpc.public_subnets
   }]
+
+  ordered_placement_strategy = [{
+    type  = BinPack
+    field = Memory
+
+  }]
 }
 
 variable "vpc_name" {
