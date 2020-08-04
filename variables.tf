@@ -29,7 +29,7 @@ variable "service_launch_type" {
 
   description = "The launch type, can be EC2 or FARGATE."
   type        = string
-  default     = ""
+  default     = "EC2"
 }
 
 # LB Vars
