@@ -27,7 +27,20 @@ resource "aws_ecs_service" "main" {
     }
   }
 
+  dynamic "ordered_placement_strategy" {
+    for_each = var.ordered_placement_strategy
+
+
+    content {
+      type  = ordered_placement_strategy.value.type
+      field = ordered_placement_strategy.value.field
+    }
+  }
+
+
   lifecycle {
     ignore_changes = [desired_count]
   }
 }
+
+
