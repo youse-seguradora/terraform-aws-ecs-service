@@ -66,8 +66,8 @@ variable "placement_strategy" {
   description = "Mapping from service to strategy."
 
   type = list(object({
-    type   = string
-    field  = string
+    type  = string
+    field = string
   }))
   default = []
 }
