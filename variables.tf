@@ -71,3 +71,63 @@ variable "placement_strategy" {
   }))
   default = []
 }
+
+variable "max_capacity" {
+  description = "Max Capacity of tasks ECS Service"
+  type        = number
+  default     = 4
+}
+
+variable "min_capacity" {
+  description = "Min Capacity of tasks ECS Service"
+  type        = number
+  default     = 1
+}
+
+variable "resource_id" {
+  description = "Ecs Service name"
+  type        = string
+  default     = ""
+}
+
+variable "service_namespace" {
+  description = "Service Name Space"
+  type        = string
+  default     = "ecs"
+}
+
+variable "scalable_dimension" {
+  description = "Scalable dimension"
+  type        = string
+  default     = "ecs:service:DesiredCount"
+}
+
+variable "policy_type" {
+  description = "App autoscaling Policy type"
+  type        = string
+  default     = "TargetTrackingScaling"
+}
+
+variable "target_value" {
+  description = "Target Value of app autoscaling target"
+  type        = number
+  default     = 65
+}
+
+variable "scale_in_cooldown" {
+  description = "Scale in cool down of App Autoscaling Target"
+  type        = number
+  default     = 60
+}
+
+variable "scale_out_cooldown" {
+  description = "Scale out cool down of App Autoscaling Target"
+  type        = number
+  default     = 30
+}
+
+variable "name_policy" {
+  description = "Name auto scaling policy"
+  type        = string
+  default     = ""
+}
